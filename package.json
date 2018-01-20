@@ -1,0 +1,33 @@
+{
+  "name": "jq-bgrandom",
+  "version": "0.0.0-development",
+  "description": "Change full random background",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jSantos3189/jq-bgRandom.git"
+  },
+  "keywords": [
+    "jQuery",
+    "plugin",
+    "cover",
+    "fullpage",
+    "unsplash"
+  ],
+  "author": "JESUS SANTOS MENDOZA HERNANDEZ <jsant0s3189@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jSantos3189/jq-bgRandom/issues"
+  },
+  "homepage": "https://github.com/jSantos3189/jq-bgRandom#readme",
+  "devDependencies": {
+    "eslint": "4.16.0",
+    "pre-commit": "1.2.2"
+  },
+  "pre-commit": [
+    "test"
+  ]
+}
