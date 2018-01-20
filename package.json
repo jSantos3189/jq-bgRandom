@@ -4,7 +4,9 @@
   "description": "Change full random background",
   "main": "index.js",
   "scripts": {
-    "test": "eslint src"
+    "pretest": "eslint src",
+    "test": "nyc mocha",
+    "test:watch": "mocha --watch"
   },
   "repository": {
     "type": "git",
@@ -25,9 +27,25 @@
   "homepage": "https://github.com/jSantos3189/jq-bgRandom#readme",
   "devDependencies": {
     "eslint": "4.16.0",
+    "expect.js": "0.3.1",
+    "jquery": "3.3.1",
+    "jsdom": "11.5.1",
+    "mocha": "5.0.0",
+    "nyc": "11.4.1",
     "pre-commit": "1.2.2"
   },
   "pre-commit": [
     "test"
-  ]
+  ],
+  "nyc":{
+    "check-coverage": true,
+    "branches":100,
+    "functions":100,
+    "lines":100,
+    "statements":100,
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  }
 }
