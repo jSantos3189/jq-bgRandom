@@ -1,3 +1,4 @@
+require('dotenv').config();
 var expect = require('expect.js');
 var jsdom = require('jsdom');
 var dom = new jsdom.JSDOM('<html><body><section></section></body></html>');
@@ -8,11 +9,10 @@ require('../src');
 
 describe('jq-bgRandom', function() {
   var $section;
-
+  var clientId = process.env.CLIENT_ID;
   beforeEach(function(){
-    window.BgRandom.setup('3734a25ef51023c4760d4042cd4c1ce1e3e65453f57c50d22958ff97f49b66b3');
+    window.BgRandom.setup(clientId);
     $section = $('section');
-    //3734a25ef51023c4760d4042cd4c1ce1e3e65453f57c50d22958ff97f49b66b3
   });
   it('should have the default values', function(){
     /* Con esto tomamos el valor de un promesa
@@ -41,7 +41,7 @@ describe('jq-bgRandom', function() {
     expect($section.css('backgroundColor')).to.be('red');
   });
   it('should set clien id attr', function(){
-    expect(window.BgRandom.clientId).to.be('3734a25ef51023c4760d4042cd4c1ce1e3e65453f57c50d22958ff97f49b66b3');
+    expect(window.BgRandom.clientId).to.be(clientId);
   });
   it('should set default image width promise', function(){
     window.BgRandom.setup('1234');
