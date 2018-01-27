@@ -7,7 +7,7 @@
     "pretest": "eslint src",
     "test": "nyc mocha",
     "test:watch": "mocha --watch",
-    "report-coverate": "cat ./coverage/lcov.info | codecov"
+    "report-coverage": "cat ./coverage/lcov.info | codecov"
   },
   "repository": {
     "type": "git",
