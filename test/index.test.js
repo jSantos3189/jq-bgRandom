@@ -1,22 +1,72 @@
+require('dotenv').config();
 var expect = require('expect.js');
 var jsdom = require('jsdom');
-
 var dom = new jsdom.JSDOM('<html><body><section></section></body></html>');
 var $ = global.jQuery = require('jquery')(dom.window);
 
+require('jsdom-global')();
 require('../src');
 
 describe('jq-bgRandom', function() {
   var $section;
-
+  var clientId = process.env.CLIENT_ID;
   beforeEach(function(){
+    window.BgRandom.setup(clientId);
     $section = $('section');
-    $section.bgRandom();
   });
-  it('should have a width of 100 %', function(){
+  it('should have the default values', function(){
+    /* Con esto tomamos el valor de un promesa
+    return $section.bgRandom().then(function($this){
+      expect($this.css('width')).to.be('100%');
+      expect($this.css('minHeight')).to.be('800px');
+      expect($this.css('backgroundImage')).to.contain('url');
+    });*/
+    $section.bgRandom();
+    expect($section.css('width')).to.be('100%');
+    expect($section.css('minHeight')).to.be('800px');
+    expect($section.css('backgroundSize')).to.be('cover');
+    expect($section.css('backgroundPosition')).to.be('center');
+    expect($section.css('backgroundColor')).to.be('black');
+  });
+  it('should have the defined values', function(){
+    $section.bgRandom({
+      minHeight: '700px',
+      backgroundSize: 'contain',
+      backgroundPosition: 'top center',
+      backgroundColor: 'red'
+    });
+    expect($section.css('minHeight')).to.be('700px');
+    expect($section.css('backgroundSize')).to.be('contain');
+    expect($section.css('backgroundPosition')).to.be('top center');
+    expect($section.css('backgroundColor')).to.be('red');
+  });
+  it('should set clien id attr', function(){
+    expect(window.BgRandom.clientId).to.be(clientId);
+  });
+  it('should set default image width promise', function(){
+    window.BgRandom.setup('1234');
+    return $section.bgRandom({
+      backgroundImage: 'path/defaultimage.jpg',
+      usePromise: true
+    }).catch(function(){
+      expect($section.css('backgroundImage')).to.contain('path/defaultimage.jpg');
+    });
+  });
+  it('should set default image without promise', function(){
+    //Es necesario refactorisar para validar correctamente
+    window.BgRandom.setup('1234');
+    $section.bgRandom({
+      backgroundImage: 'path/defaultimage.jpg'
+    });
     expect($section.css('width')).to.be('100%');
   });
-  it('should have a heigth of 800px', function(){
-    expect($section.css('minHeight')).to.be('800px');
+  it('should set random image unsplash', function(){
+    return $section.bgRandom({
+      backgroundImage: 'path/defaultimage.jpg',
+      usePromise: true
+    }).then(function(){
+      expect($section.css('backgroundImage')).to.contain('url(https://');
+    });
   });
+
 });
