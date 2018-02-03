@@ -1,6 +1,6 @@
 /**
  * jq-bgRandom
- * @version 0.0.0-development
+ * @version 1.0.0
  * @author jsmh
  * @license The MIT License (MIT)
  */
