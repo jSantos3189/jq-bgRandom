@@ -1,6 +1,6 @@
 {
   "name": "jq-bgrandom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Change full random background",
   "main": "src/index.js",
   "scripts": {
