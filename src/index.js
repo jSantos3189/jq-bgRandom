@@ -1,17 +1,16 @@
 /**
  * jq-bgRandom
- * @version 1.0.0
+ * @version 1.0.1
  * @author jsmh
  * @license The MIT License (MIT)
  */
 
 (function(global, $){
-  //funciones de sentencia
+
   function BgRandom(){
 
   }
 
-  //funcion declarativa
   BgRandom.prototype.setup = function(clientId) {
     this.clientId = clientId;
   };
