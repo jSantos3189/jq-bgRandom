@@ -6,12 +6,11 @@
  */
 
 (function(global, $){
-  //funciones de sentencia
+
   function BgRandom(){
 
   }
 
-  //funcion declarativa
   BgRandom.prototype.setup = function(clientId) {
     this.clientId = clientId;
   };
