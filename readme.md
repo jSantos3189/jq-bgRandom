@@ -5,7 +5,7 @@
 ### Installation
 
 ```sh
-npm install jq-BgRandom
+$   npm install jq-BgRandom
 ```
 
 ##### You need to load jQuery first
@@ -30,7 +30,7 @@ window.BgRandom.setup(clientId);
 ```js
 $(document).ready(function() {
 	window.BgRandom.setup(clientId);
-    $('#bg-unsplash')bgRandom({
+    $('#bg-unsplash').bgRandom({
       minHeight: '700px', // by default it´s 800px
       backgroundSize: 'contain', // by default it´s cover
       backgroundPosition: 'top center', // by default its center
